@@ -8,7 +8,7 @@ metadata:
     tier: frontend
     component: frontend
 spec:
-  replicas: 1 # Ensures exactly 1 pod is running at all times
+  replicas: 2 # Ensures exactly 1 pod is running at all times
   selector:
     # This must match the labels in the template below
     matchLabels:
