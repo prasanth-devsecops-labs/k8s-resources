@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  # replicaset labels
+  labels:
+    project: roboshop
+    purpose: replicaset-demo
+    tier: frontend
+    component: frontend
+  annotations:
+    kubernetes.io/change-cause: "moving to 1.29"
+spec:
+  replicas: 2
+  selector:
+    # using this labels replicaset selects the pod
+    matchLabels:
+      project: roboshop
+      purpose: replicaset-demo
+      tier: frontend
+      component: frontend
+  # pod definition, pod is subset of replicaset
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        purpose: replicaset-demo
+        tier: frontend
+        component: frontend
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.29
