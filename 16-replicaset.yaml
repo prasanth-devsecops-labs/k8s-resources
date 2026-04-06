@@ -8,9 +8,9 @@ metadata:
     tier: frontend
     component: frontend
 spec:
-  replicas: 1
+  replicas: 1 # Ensures exactly 1 pod is running at all times
   selector:
-    # using labels replicaset selects the pod
+    # This must match the labels in the template below
     matchLabels:
       project: roboshop
       purpose: replicaset-demo
@@ -19,6 +19,7 @@ spec:
   # This is pod defintion, pod is subset of replicaset
   template:
     metadata:
+      # Labels used by the ReplicaSet to identify its pods
       labels:
         project: roboshop
         purpose: replicaset-demo

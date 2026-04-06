@@ -2,26 +2,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx
-  # replicaset labels
+  # Labels for the Deployment object itself
   labels:
     project: roboshop
     purpose: replicaset-demo
     tier: frontend
     component: frontend
   annotations:
+    # Appears in 'kubectl rollout history'
     kubernetes.io/change-cause: "moving to 1.29"
 spec:
   replicas: 2
   selector:
-    # using this labels replicaset selects the pod
+    # The Deployment uses these to find and manage its Pods
     matchLabels:
       project: roboshop
       purpose: replicaset-demo
       tier: frontend
       component: frontend
-  # pod definition, pod is subset of replicaset
+  # Template defines the Pods that will be created
   template:
     metadata:
+      # These MUST match the 'selector' labels above
       labels:
         project: roboshop
         purpose: replicaset-demo
