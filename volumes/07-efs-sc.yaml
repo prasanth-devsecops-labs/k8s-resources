@@ -5,6 +5,6 @@ metadata:
 provisioner: efs.csi.aws.com
 parameters:
   provisioningMode: efs-ap
-  fileSystemId: fs-0a74f07d59bf6910a
+  fileSystemId: fs-0dab264cbb11b7750
   directoryPerms: "700"
   basePath: "/roboshop"
